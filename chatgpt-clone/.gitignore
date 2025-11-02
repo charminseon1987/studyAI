@@ -4,3 +4,9 @@
 __pycache__/
 *.pyc
 .venv/
+ai-memory.db
+ai-memory.db-shm
+ai-memory.db-wal
+*.db
+*.db-shm
+*.db-wal
