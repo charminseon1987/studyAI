@@ -3,17 +3,12 @@ name = "customer-support-agent"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.13"
 dependencies = [
-    "graphviz>=0.21",
-    "openai-agents[viz]>=0.2.6",
+    "numpy>=2.3.2",
+    "openai-agents[voice]>=0.2.8",
     "pip>=25.3",
     "python-dotenv>=1.1.1",
-    "streamlit>=1.48.0",
+    "sounddevice>=0.5.2",
+    "streamlit>=1.48.1",
 ]
-
-[dependency-groups]
-dev = [
-    "ipykernel>=6.30.1",
-]
-
