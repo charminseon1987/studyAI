@@ -1,6 +1,7 @@
 from agents import Agent, RunContextWrapper, input_guardrail, Runner, GuardrailFunctionOutput
 
 from models import UserAccountContext,InputGuardRailOuput
+from my_agents import technical_agent
 
 
 Input_guardrail_agent = Agent(
@@ -9,7 +10,7 @@ Input_guardrail_agent = Agent(
     Ensure the user's request specifically pertains to User Account details, Billing inquiries, Order information, or Technical upport isssues, and is not off-topic.
     If the request is off-topic,
     return a reason for the wripwrie. you can make small conversation with the user, specially at the beginning of the conversation, but don't help with requests that
-    are not related to User Account details, billling inquiries, Order information, or Technical Support isssue.
+    are not related to User Account details, billling inquiries, Order information, or Technical Support issue.
     """,
     output_type = InputGuardRailOuput,
     
@@ -101,5 +102,11 @@ triage_agent = Agent(
     instructions=dynamic_triage_agent_instructions,
     input_guardrails = [
         off_topic_guardrail,
+    ],
+    tools=[
+        technical_agent.as_tool(
+            tool=name="Technical Help Tool",
+            tool_descriptions = "Use this when the user needs tech support."
+        )
     ]
 )

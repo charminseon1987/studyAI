@@ -1,6 +1,6 @@
 import dotenv
-
 dotenv.load_dotenv()
+
 from openai import OpenAI
 import asyncio
 import streamlit as st
@@ -40,7 +40,7 @@ async def paint_history():
 
 asyncio.run(paint_history())
 
-
+#await 이 없는 경우 비동기 처리 
 async def run_agent(message):
 
     with st.chat_message("ai"):

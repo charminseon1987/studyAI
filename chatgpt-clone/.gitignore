@@ -1,12 +1,11 @@
-.env
-.DS_Store
-*.db
+# Python-generated files
 __pycache__/
-*.pyc
-.venv/
-ai-memory.db
-ai-memory.db-shm
-ai-memory.db-wal
-*.db
-*.db-shm
-*.db-wal
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+.env
