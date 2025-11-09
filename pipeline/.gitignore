@@ -1,0 +1,23 @@
+<<<<<<< HEAD
+.env
+.DS_Storeb
+*.db
+__pycache__/
+*.pyc
+.venv/
+**/.venv/
+**/.env
+=======
+
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+#Virtual environments
+.env
+.local_env
+.venv
+>>>>>>> db1df66 (Initial commit)
