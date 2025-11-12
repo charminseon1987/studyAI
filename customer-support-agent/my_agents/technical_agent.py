@@ -1,6 +1,8 @@
 from agents import Agent, RunContextWrapper
 from models import UserAccountContext
-
+from tools import lookup_billing_history, process_refund_request, update_payment_method, apply_billing_credit, escalate_to_engineering
+from tools import AgentToolUsageLoggingHooks
+from my_agents.output_guardrails import technical_output_guardrail
 
 def dynamic_technical_agent_instructions(
     wrapper: RunContextWrapper[UserAccountContext],
@@ -39,4 +41,13 @@ def dynamic_technical_agent_instructions(
 technical_agent = Agent(
     name="Technical Support Agent",
     instructions=dynamic_technical_agent_instructions,
+    tools=[
+        lookup_billing_history,
+        process_refund_request,
+        update_payment_method,
+        apply_billing_credit,
+        escalate_to_engineering,
+    ],
+    hooks=AgentToolUsageLoggingHooks(), 
+    output_guardrails = [technical_output_guardrail],
 )
