@@ -1,0 +1,37 @@
+collect_politics_news_task:
+  description: >
+    네이버 뉴스에서 정치 분야의 최신 뉴스를 수집하세요.
+    collect_naver_news 도구를 사용하여 정치 카테고리의 뉴스를 가져오고,
+    각 뉴스의 제목, 링크, 본문, 날짜를 구조화된 형태로 제공하세요.
+  expected_output: >
+    정치 뉴스 리스트.
+    각 뉴스는 title, link, content, date 필드를 포함하는 딕셔너리 형태입니다.
+  agent: news_collector_agent
+
+collect_economy_news_task:
+  description: >
+    네이버 뉴스에서 경제 분야의 최신 뉴스를 수집하세요.
+    collect_naver_news 도구를 사용하여 경제 카테고리의 뉴스를 가져오고,
+    각 뉴스의 제목, 링크, 본문, 날짜를 구조화된 형태로 제공하세요.
+  expected_output: >
+    경제 뉴스 리스트.
+    각 뉴스는 title, link, content, date 필드를 포함하는 딕셔너리 형태입니다.
+  agent: news_collector_agent
+
+summarize_politics_news_task:
+  description: >
+    수집된 정치 뉴스들을 읽고 각 뉴스의 핵심 내용을 요약하세요.
+    각 뉴스마다 3-5줄 정도로 간결하게 요약하며, 중요한 정보를 놓치지 않도록 하세요.
+  expected_output: >
+    정치 뉴스 요약 리스트.
+    각 뉴스의 제목과 함께 3-5줄의 요약 내용을 제공합니다.
+  agent: news_summarizer_agent
+
+summarize_economy_news_task:
+  description: >
+    수집된 경제 뉴스들을 읽고 각 뉴스의 핵심 내용을 요약하세요.
+    각 뉴스마다 3-5줄 정도로 간결하게 요약하며, 중요한 정보를 놓치지 않도록 하세요.
+  expected_output: >
+    경제 뉴스 요약 리스트.
+    각 뉴스의 제목과 함께 3-5줄의 요약 내용을 제공합니다.
+  agent: news_summarizer_agent

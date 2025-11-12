@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뉴스 요약 보고서</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .report-date {
+            margin-top: 15px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        
+        .section {
+            padding: 40px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title::before {
+            content: '';
+            width: 5px;
+            height: 30px;
+            background: #667eea;
+            border-radius: 3px;
+        }
+        
+        .summary-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            line-height: 1.8;
+            color: #444;
+            white-space: pre-wrap;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .news-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .news-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .news-number {
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        
+        .news-date {
+            color: #666;
+            font-size: 0.85em;
+        }
+        
+        .news-title {
+            font-size: 1.1em;
+            color: #333;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            font-weight: 600;
+        }
+        
+        .news-content {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .news-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: color 0.3s;
+        }
+        
+        .news-link:hover {
+            color: #764ba2;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 30px;
+            background: #f8f9fa;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: 700;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📰 뉴스 요약 보고서</h1>
+            <p>네이버 뉴스 정치/경제 분야 최신 기사 분석</p>
+            <div class="report-date">생성일: 2025년 11월 12일 04:18</div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">5</div>
+                <div class="stat-label">정치 기사</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">5</div>
+                <div class="stat-label">경제 기사</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">10</div>
+                <div class="stat-label">전체 기사</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">🏛️ 정치 뉴스 요약</h2>
+            <div class="summary-box">1. 다닥다닥 커피숍⋯출점 거리 규제가 정답? [어떻게 생각하십니까]  
+최근 4년간 국내 상위 10개 커피 브랜드 가맹점 수가 두 배로 급증하며 시장이 포화상태에 이르렀다. 스타벅스·이디야·메가커피 등 브랜드 간 출점 경쟁이 치열해지면서 점주들은 이익 감소에 직면하는 &#39;치킨게임&#39; 상황이다. 본사의 매출과 영업이익은 크게 성장했으나, 소비자 선택권 확대와 시장 침체 우려 속에서 출점 거리 규제 필요성이 제기되고 있다.
+
+2. 비만약 양대산맥⋯릴리 &#39;질주&#39; vs 노보 &#39;속도조절&#39;  
+글로벌 비만치료제 시장을 양분하는 노보노디스크와 일라이릴리의 3분기 실적이 모두 성장했으나, 성장세는 상반된다. 노보노디스크는 위고비 매출 성장 둔화와 시장 경쟁 격화 등으로 연매출 가이던스를 하향 조정했고, 일라이릴리는 마운자로 매출 호조에 힘입어 가이던스를 최대 5% 상향 조정했다. 공급 문제와 불법 제네릭 유통 문제도 노보노디스크에 영향을 주고 있다.
+
+3. 삼성전자, 두 번 접는 &#39;트라이폴드&#39; 다음달 5일 출시  
+삼성전자가 화면을 두 번 접는 혁신적인 스마트폰 &#39;갤럭시Z 트라이폴드&#39;를 다음 달 5일 공식 출시한다. 완전히 펼치면 약 10인치 대화면을 제공하나, 접었을 때는 일반 스마트폰과 비슷한 휴대성을 유지하는 것이 특징이다. 한국을 비롯해 중국, 싱가포르, 두바이 등 아시아 주요 시장에 우선 출시될 예정이며, 기존 폴드 시리즈에서 한 단계 진화한 모델로 평가받고 있다.
+
+4. &#39;두바이초콜릿&#39; 이후 편의점 &#39;히트작&#39; 계보 끊겼다  
+지난해 큰 인기를 끌었던 &#39;두바이 초콜릿&#39;을 비롯한 여러 편의점 히트 상품들이 올해 들어선 눈에 띄게 줄어들었다. 짧아진 유행 주기, 유사 상품 과다 출현, 소비자 피로감 누적 등 복합적 요인이 작용한 결과로 분석된다. 편의점 업계는 내수 경기 침체와 점포 포화 상황 속에서 히트 상품 부재가 실적 둔화에도 영향을 미치고 있다고 평가한다.
+
+5. 증선위, 불공정거래 신고자에 포상금 2500만원 지급  
+증권선물위원회는 올해 자본시장 불공정거래를 </div>
+            <div class="news-grid">
+                
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-number">#1</span>
+                <span class="news-date">3분전</span>
+            </div>
+            <h3 class="news-title">내년 교육감 선거 ‘최대 격전지’ 경남, 이번에도 변수는 ‘단일화’</h3>
+            <p class="news-content">출마 예상자만 16명…2014년 선거에서도 ‘결정적 변수’로 작용 내년 6월 지방선거와 함께 예정된 교육감 선거에서 경남지역이 최대 격전지로 떠오르고 있다. 진보 성향의 박종훈 현 경남도교육감이 3선 연임 제한으로 출마하지 못하면서 선거과정에서 치열한 경쟁이 벌어질 것으로 전망된다. 12일 경남지역 교육계 등에 따르면 현재 출마 예상자로 거론되는 인물은 1...</p>
+            <a href="https://n.news.naver.com/mnews/article/032/0003408399?sid=100" target="_blank" class="news-link">원문 보기 →</a>
+        </div>
+        
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-number">#2</span>
+                <span class="news-date">9분전</span>
+            </div>
+            <h3 class="news-title">정부 ‘헌법존중TF’ 띄우자…경찰 내부 ‘뒤숭숭’</h3>
+            <p class="news-content">‘계엄 연루’ 점검 대상 기관에 선정 승진·전보 인사철 앞둬 긴장 역력 정부가 ‘헌법존중 정부혁신 태스크포스(TF)’를 구성하기로 하면서 경찰 내부가 ‘걱정 반 기대 반’으로 술렁이고 있다. 경찰이 지난해 12·3 불법계엄에 연루된 주요 기관이었던 데다 승진·전보 인사를 앞두고 있어 더 뒤숭숭한 분위기다. 12일 취재를 종합하면, 경찰청은 ‘헌법존중 TF’...</p>
+            <a href="https://n.news.naver.com/mnews/article/032/0003408395?sid=100" target="_blank" class="news-link">원문 보기 →</a>
+        </div>
+        
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-number">#3</span>
+                <span class="news-date">1분전</span>
+            </div>
+            <h3 class="news-title">&quot;사표 아닌 대장동 항소장 접수했어야&quot;…&#39;항소 포기&#39; 노만석 사퇴에 격앙된 野</h3>
+            <p class="news-content">[변문우 기자 bmw@sisajournal.com] 노만석 검찰총장 직무대행, 결국 사의 표명…대장동 항소 포기 닷새만 주진우 &quot;사의 표명으로 끝날 일이 아닌 &#39;수사의 시작&#39;…정성호 관여가 불법임 자인&quot; 박성훈 &quot;진실 안 밝히고 물러나려는 무책임 태도…어떤 &#39;외압&#39; 작용했는지 밝히라&quot; 노만석 검찰총장 직무대행이 11월12일 서울 서초구 대검찰청으로 출근하고...</p>
+            <a href="https://n.news.naver.com/mnews/article/586/0000115824?sid=100" target="_blank" class="news-link">원문 보기 →</a>
+        </div>
+        
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-number">#4</span>
+                <span class="news-date">2분전</span>
+            </div>
+            <h3 class="news-title">&#39;3시간 공백, 도청 폐쇄&#39; 결국 내란  특검으로?</h3>
+            <p class="news-content">12.3 비상계엄 당일 오영훈 지사의 행적에 대한 논란이 끊이지 않고 있습니다. 오 지사의 비상 계엄 방조를 주장해온 고부건 변호사가 결국 오 지사를 내란특검에 고발했습니다. 오 지사는 이런 주장은 허위사실이라고 밝히고 있지만, 특검 수사는 불가피해졌다는 얘기가 나오고 있습니다. 강석창 기잡니다. (앵커) 12.3 비상계엄 당일 제주도청 폐쇄와 3시간 공백...</p>
+            <a href="https://n.news.naver.com/mnews/article/661/0000065229?sid=100" target="_blank" class="news-link">원문 보기 →</a>
+        </div>
+        
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-number">#5</span>
+                <span class="news-date">3분전</span>
+            </div>
+            <h3 class="news-title">법사위 소위, 檢 특활비 20억 삭감… 집단행동 검사장 근무지 집행 막아 [檢, 대장동 항소 포기 파장]</h3>
+            <p class="news-content">예산소위, 2026년 예산안 심사 검찰 특활비 72억원 → 52억원 특별업무경비도 30억원 깎아 ‘정치적 중립 의무’ 위반 특정 항소 포기 반발한 검찰청 배제 국회 법제사법위원회 예산결산기금심사소위원회는 12일 회의를 열고 검찰의 특수활동비(특활비)를 정부안보다 20억원 삭감했다. 법사위 예산소위는 이날 회의에서 법무부·감사원·고위공직자범죄수사처(공수처)·...</p>
+            <a href="https://n.news.naver.com/mnews/article/022/0004082214?sid=100" target="_blank" class="news-link">원문 보기 →</a>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">💰 경제 뉴스 요약</h2>
+            <div class="summary-box">1. 다닥다닥 커피숍⋯출점 거리 규제가 정답? [어떻게 생각하십니까]  
+최근 4년간 국내 상위 10개 커피 브랜드 가맹점 수가 두 배로 급증하며 시장이 포화상태에 이르렀다. 스타벅스·이디야·메가커피 등 브랜드 간 출점 경쟁이 치열해지면서 점주들은 이익 감소에 직면하는 &#39;치킨게임&#39; 상황이다. 본사의 매출과 영업이익은 크게 성장했으나, 소비자 선택권 확대와 시장 침체 우려 속에서 출점 거리 규제 필요성이 제기되고 있다.
+
+2. 비만약 양대산맥⋯릴리 &#39;질주&#39; vs 노보 &#39;속도조절&#39;  
+글로벌 비만치료제 시장을 양분하는 노보노디스크와 일라이릴리의 3분기 실적이 모두 성장했으나, 성장세는 상반된다. 노보노디스크는 위고비 매출 성장 둔화와 시장 경쟁 격화 등으로 연매출 가이던스를 하향 조정했고, 일라이릴리는 마운자로 매출 호조에 힘입어 가이던스를 최대 5% 상향 조정했다. 공급 문제와 불법 제네릭 유통 문제도 노보노디스크에 영향을 주고 있다.
+
+3. 삼성전자, 두 번 접는 &#39;트라이폴드&#39; 다음달 5일 출시  
+삼성전자가 화면을 두 번 접는 혁신적인 스마트폰 &#39;갤럭시Z 트라이폴드&#39;를 다음 달 5일 공식 출시한다. 완전히 펼치면 약 10인치 대화면을 제공하나, 접었을 때는 일반 스마트폰과 비슷한 휴대성을 유지하는 것이 특징이다. 한국을 비롯해 중국, 싱가포르, 두바이 등 아시아 주요 시장에 우선 출시될 예정이며, 기존 폴드 시리즈에서 한 단계 진화한 모델로 평가받고 있다.
+
+4. &#39;두바이초콜릿&#39; 이후 편의점 &#39;히트작&#39; 계보 끊겼다  
+지난해 큰 인기를 끌었던 &#39;두바이 초콜릿&#39;을 비롯한 여러 편의점 히트 상품들이 올해 들어선 눈에 띄게 줄어들었다. 짧아진 유행 주기, 유사 상품 과다 출현, 소비자 피로감 누적 등 복합적 요인이 작용한 결과로 분석된다. 편의점 업계는 내수 경기 침체와 점포 포화 상황 속에서 히트 상품 부재가 실적 둔화에도 영향을 미치고 있다고 평가한다.
+
+5. 증선위, 불공정거래 신고자에 포상금 2500만원 지급  
+증권선물위원회는 올해 자본시장 불공정거래를 </div>
+            <div class="news-grid">
+                
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-number">#1</span>
+                <span class="news-date">1분전</span>
+            </div>
+            <h3 class="news-title">삼성전자, 두 번 접는 &#39;트라이폴드&#39; 다음달 5일 출시</h3>
+            <p class="news-content">삼성전자가 두 번 접는 스마트폰 &#39;갤럭시Z 트라이폴드&#39;를 다음 달 출시합니다. 업계에 따르면 삼성전자는 다음 달 5일 트라이폴드 공식 출시 행사를 열고 국내 판매를 개시할 예정입니다. 트라이폴드는 기존 양면 접이식 &#39;폴드&#39; 시리즈에서 한 단계 진화한 모델로, 화면을 두 번 접을 수 있는 구조로 설계됐습니다. 완전히 펼치면 약 10인치의 대화면을 제공하고 접...</p>
+            <a href="https://n.news.naver.com/mnews/article/422/0000801031?sid=101" target="_blank" class="news-link">원문 보기 →</a>
+        </div>
+        
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-number">#2</span>
+                <span class="news-date">1분전</span>
+            </div>
+            <h3 class="news-title">&#39;두바이초콜릿&#39; 이후 편의점 &#39;히트작&#39; 계보 끊겼다</h3>
+            <p class="news-content">밤티라미수·생레몬 하이볼 등 이어 괄목할 인기 상품 부재 편의점 실적에도 일부 영향⋯SNS·소비 결합에 피로도 ↑ 편의점 업계에서 매출 견인차 역할을 하는 이른바 &#39;히트작&#39;이 올 들어선 좀처럼 탄생하지 않고 있다. 지난해 &#39;두바이 초콜릿&#39; 등 잇단 품절 대란 상품이 화제를 모은 바 있어 대조적이다. 소비자들 사이에서 유행 주기가 유난히 짧아진 데다, 유사한...</p>
+            <a href="https://n.news.naver.com/mnews/article/031/0000980449?sid=101" target="_blank" class="news-link">원문 보기 →</a>
+        </div>
+        
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-number">#3</span>
+                <span class="news-date">2분전</span>
+            </div>
+            <h3 class="news-title">증선위, 불공정거래 신고자에 포상금 2500만원 지급</h3>
+            <p class="news-content">올해 평균 포상금 7890만원…작년 대비 2.4배 증가 사진=뉴스1 자본시장 불공정거래를 신고한 제보자에게 2500만원의 포상금이 지급된다. 올해 포상금 평균 지급액은 작년보다 2.4배 증가한 것으로 나타났다. 증권선물위원회는 12일 제20차 회의에서 자본시장 불공정거래 행위를 신고한 신고자에 대해 자본시장법 등에 따라 포상금 2500만원 지급을 의결했다고...</p>
+            <a href="https://n.news.naver.com/mnews/article/417/0001112890?sid=101" target="_blank" class="news-link">원문 보기 →</a>
+        </div>
+        
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-number">#4</span>
+                <span class="news-date">2분전</span>
+            </div>
+            <h3 class="news-title">삼성·SK 만난 ASML 수장…&#39;아시아 거점&#39; 화성에</h3>
+            <p class="news-content">[앵커] 반도체 핵심 장비 생산 기업인 네덜란드 ASML이 한국에 제조기지를 새로 구축했습니다. 이를 계기로 방한한 ASML 최고경영자가 삼성전자와 SK하이닉스와 긴밀한 협력을 논의했는데요. 배진솔 기자가 보도합니다. [기자] 네덜란드 장비 기업 ASML이 &#39;아시아 핵심 거점&#39;으로 경기도 화성에 반도체 장비 클러스터를 지었습니다. 1만6천㎡규모로 2021년...</p>
+            <a href="https://n.news.naver.com/mnews/article/422/0000801030?sid=101" target="_blank" class="news-link">원문 보기 →</a>
+        </div>
+        
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-number">#5</span>
+                <span class="news-date">3분전</span>
+            </div>
+            <h3 class="news-title">한국부동산원 ‘공정 채용 우수기업상’ 수상…구직자 답변 피드백 제공</h3>
+            <p class="news-content">한국부동산원은 고용노동부가 주관하는 ‘2025년 공정채용 우수기업 어워즈’에서 인사혁신처장상을 수상했다고 12일 밝혔다. 한국부동산원 제공 한국부동산원은 고용노동부가 주관하는 ‘2025년 공정채용 우수기업 어워즈’에서 인사혁신처장상을 수상했다고 12일 밝혔다. ‘공정채용 우수기업 어워즈’는 직원들을 뽑을 때 얼마나 공정한 채용을 했는가를 평가해 시상하는 상...</p>
+            <a href="https://n.news.naver.com/mnews/article/082/0001353416?sid=101" target="_blank" class="news-link">원문 보기 →</a>
+        </div>
+        
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+    
