@@ -51,12 +51,21 @@ class TranslatorCrew:
             verbose=True
         )
 
+    def retranslate_task(self):
+        task_config = self.tasks_config["retranslate_task"].copy()
+        task_config.pop("agent", None)
+        return Task(
+            **task_config,
+            agent=self.translator_agent(),
+            verbose=True
+        )
+
     # 워크플로우 조합 메서드 
     # @crew 데코레이터 제거 : 자동매핑 기능 비활성화
     def assemble_crew(self):
         return Crew(
             agents=[self.translator_agent()],
-            tasks=[self.translate_task()],
+            tasks=[self.translate_task(), self.retranslate_task()],
             verbose=True
         )
 
