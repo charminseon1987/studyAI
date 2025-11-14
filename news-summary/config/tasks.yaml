@@ -35,3 +35,12 @@ summarize_economy_news_task:
     경제 뉴스 요약 리스트.
     각 뉴스의 제목과 함께 3-5줄의 요약 내용을 제공합니다.
   agent: news_summarizer_agent
+
+#newsReaderAgent : nomade
+translate_task:
+  description: >
+    translate {sentence} from English to Korean
+  expected_output: >
+    A well formatted translation from English to Korean using proper 
+    capitalization of names and places.
+  agent: translator_agent

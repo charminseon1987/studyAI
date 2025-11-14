@@ -32,7 +32,7 @@ def is_video_article(title: str, link: str) -> bool:
     
     return False
 
-
+# 
 def parse_date(date_str: str) -> Optional[datetime]:
     """날짜 문자열을 datetime 객체로 변환"""
     if not date_str or date_str == "날짜 없음":
@@ -240,12 +240,15 @@ def _collect_naver_news_impl(category: str, num_articles: int = 5) -> List[Dict]
                                 break
         
         # 일주일 이내 기사만 필터링 (리스트 페이지에서 날짜가 있는 경우)
-        # 날짜가 없거나 일주일 이내인 기사만 포함
+        #  일주일 이내인 기사만 포함
         filtered_news = []
         for news_item in news_links:
             date = news_item.get('date', '')
             # 날짜가 없거나 일주일 이내인 경우 포함 (날짜가 없으면 나중에 기사 페이지에서 확인)
-            if not date or is_within_week(date):
+            #날짜가 없는경우 불포함, 일주일 이내인 경우 포함 
+            if not date:
+                continue
+            elif is_within_week(date):
                 filtered_news.append(news_item)
         
         # 필요한 개수만큼만 가져오기 (필터링 후에도 충분한 기사를 확보하기 위해 더 많이 수집)

@@ -1,0 +1,377 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뉴스 요약 보고서</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .report-date {
+            margin-top: 15px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        
+        .section {
+            padding: 40px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title::before {
+            content: '';
+            width: 5px;
+            height: 30px;
+            background: #667eea;
+            border-radius: 3px;
+        }
+        
+        .summary-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            line-height: 1.8;
+            color: #444;
+            white-space: pre-wrap;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .news-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .news-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .news-number {
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        
+        .news-date {
+            color: #666;
+            font-size: 0.85em;
+        }
+        
+        .news-title {
+            font-size: 1.1em;
+            color: #333;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            font-weight: 600;
+        }
+        
+        .news-content {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .news-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: color 0.3s;
+        }
+        
+        .news-link:hover {
+            color: #764ba2;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 30px;
+            background: #f8f9fa;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: 700;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📰 뉴스 요약 보고서</h1>
+            <p>네이버 뉴스 정치/경제 분야 최신 기사 분석</p>
+            <div class="report-date">생성일: 2025년 11월 14일 08:04</div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">5</div>
+                <div class="stat-label">정치 기사</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">5</div>
+                <div class="stat-label">경제 기사</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">10</div>
+                <div class="stat-label">전체 기사</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">🏛️ 정치 뉴스 요약</h2>
+            <div class="summary-box">1. [부고] 고종원(장동혁 국민의힘 당대표 후보 당시 공보단장)씨 조모상  
+- 고종원 국민의힘 당대표 후보 당시 공보단장의 조모인 김복송씨(향년 101세)가 별세했다.  
+- 빈소는 서울아산병원 장례식장 8호실에 마련되었으며, 입관은 16일 오전 11시, 발인은 17일 오전 7시, 장례미사는 17일 오전 8시 광장동성당에서 진행된다.  
+- 장지는 하늘안추모공원이다.
+
+2. 대장동 재판 항소 포기 사태 일파만파...장동혁 국민의힘 대표 &quot;이재명 탄핵해야&quot;  
+- 대장동 재판과 관련해 항소 포기 사태가 발생하며 논란이 커지고 있다.  
+- 국민의힘 장동혁 대표는 이에 대해 &quot;이재명 대표를 탄핵해야 한다&quot;고 강하게 비판했다.  
+- 국민의힘 의원들은 항소 포기 관련 집회를 열고 검찰의 행태를 규탄했으며, 여야 간 대립이 격화 중이다.
+
+3. 與 “항명 검사장들 모두 보직해임 해야”  
+- 더불어민주당은 대장동 사건 항소 포기에 반발한 검사장들을 ‘항명’으로 규정하고 즉각 감찰과 보직 해임을 촉구했다.  
+- 민주당은 검사들도 탄핵 없이 파면할 수 있는 ‘검사 파면법’ 발의를 발표하며 연내 처리를 목표로 하고 있다.  
+- 국민의힘은 민주당의 조치를 정치 보복 및 검찰 길들이기로 강력 비판하고, 검사들은 권력에 순응하는 구조가 될 위험을 우려하고 있다.
+
+4. 李 “美, 한국 원잠 승인… 우라늄 농축도 지지”  
+- 한미 정상회담 후 발표된 조인트 팩트 시트에서 미국이 한국의 핵 추진 잠수함(원잠) 건조를 승인하고, 우라늄 농축 및 사용 후 핵연료 재처리 권한 확대도 지지한다고 명시했다.  
+- 이재명 대통령은 이를 한미 동맹 강화와 미래형 전략적 포괄 동맹으로 발전시킨 성과로 평가했다.  
+- 다만 원잠 건조 위치, 한미 원자력협정 개정 등은 후속 협상이 필요해 난항이 예상된다.
+
+5. 독립운동 요람, 상하이거류민단 창립 105주년·인성학교 개교 109주년 기념식, 상하이한국학교서 14일 개최  
+- 상하이 대한거류민단 창립 105주년 및 인성학교 개교 109</div>
+            <div class="news-grid">
+                
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-number">#1</span>
+                <span class="news-date">19분전</span>
+            </div>
+            <h3 class="news-title">[부고] 고종원(장동혁 국민의힘 당대표 후보 당시 공보단장)씨 조모상</h3>
+            <p class="news-content">빈소 서울아산병원 장례식장 8호실 입관 16일 오전 11시, 발인 17일 오전 7시 장례미사 17일 오전 8시 광장동성당 장지 하늘안추모공원 [데일리안 = 정도원 기자] ▲ 김복송(향년 101세)씨 별세, 고종원(장동혁 국민의힘 당대표 후보 당시 공보단장)씨 조모상 = 14일 오전, 서울아산병원 장례식장 8호실(서울특별시 송파구 올림픽로43길88), 입관 ...</p>
+            <a href="https://n.news.naver.com/mnews/article/119/0003025404?sid=100" target="_blank" class="news-link">원문 보기 →</a>
+        </div>
+        
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-number">#2</span>
+                <span class="news-date">1분전</span>
+            </div>
+            <h3 class="news-title">대장동 재판 항소 포기 사태 일파만파...장동혁 국민의힘 대표 &quot;이재명 탄핵해야&quot; [데일리안 주간 포토]</h3>
+            <p class="news-content">ⓒ데일리안 홍금표 기자 [데일리안 = 홍금표 기자] ﻿ ⓒ데일리안 홍금표 기자 더불어민주당 &quot;이재명 대표가 공포 정치 희생자&quot; 정청래 더불어민주당 대표가 10일 오전 서울 여의도 국회에서 열린 더불어민주당 최고위원회의에서 모두발언을 하고 있다. ⓒ데일리안 홍금표 기자 조국, 조국혁신당 당대표 출마 선언 조국 조국혁신당 전 비상대책위원장이 10일 오전 서울 ...</p>
+            <a href="https://n.news.naver.com/mnews/article/119/0003025406?sid=100" target="_blank" class="news-link">원문 보기 →</a>
+        </div>
+        
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-number">#3</span>
+                <span class="news-date">3분전</span>
+            </div>
+            <h3 class="news-title">與 “항명 검사장들 모두 보직해임 해야”</h3>
+            <p class="news-content">검사 파면법 발의, 연내 처리 목표 정청래 더불어민주당 대표가 13일 서울 여의도 국회에서 열린 의원총회에서 대장동 사건 관련 정치검사 규탄 피켓팅을 하고 있다./뉴스1 더불어민주당이 14일 대장동 사건 항소 포기에 반발한 검사들에 대해 “항명 검사장들을 즉시 감찰하고 보직 해임해야 한다”고 했다. 노만석 검찰총장 직무 대행에게 항소 포기의 경위를 ‘설명’...</p>
+            <a href="https://n.news.naver.com/mnews/article/023/0003941162?sid=100" target="_blank" class="news-link">원문 보기 →</a>
+        </div>
+        
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-number">#4</span>
+                <span class="news-date">5분전</span>
+            </div>
+            <h3 class="news-title">李 “美, 한국 원잠 승인… 우라늄 농축도 지지”</h3>
+            <p class="news-content">한미 통상·안보 ‘팩트시트’ 발표 이재명 대통령이 14일 서울 용산 대통령실에서 한·미 간 관세·안보 합의를 문서화한 &#39;조인트 팩트 시트(Joint Fact Sheet·공동 설명 자료)&#39;를 발표하고 있다. 왼쪽부터 김용범 정책실장, 이 대통령, 위성락 국가안보실장, 이규연 홍보소통수석./뉴시스 한미 양국이 지난달 29일 한미 정상회담의 통상·안보 합의 사항...</p>
+            <a href="https://n.news.naver.com/mnews/article/023/0003941160?sid=100" target="_blank" class="news-link">원문 보기 →</a>
+        </div>
+        
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-number">#5</span>
+                <span class="news-date">7분전</span>
+            </div>
+            <h3 class="news-title">독립운동 요람, 상하이거류민단 창립 105주년·인성학교 개교 109주년 기념식, 상하이한국학교서 14일 개최</h3>
+            <p class="news-content">이형진(왼쪽 3번째) 한국광복군기념사업회장 등 중국 상하이(上海)에서 활동한 독립운동가 후손 등이 14일 일제강점기 독립운동의 요람이자 해외 한인사회의 구심점이었던 상하이대한거류민단 창립 105주년 및 그 정신적 뿌리인 인성학교 개교 109주년 기념식에서 참석한 뒤 기념촬영하고 있다. 한국광복군기념사업회 제공 일제강점기 독립운동의 요람이자 해외 한인사회의 ...</p>
+            <a href="https://n.news.naver.com/mnews/article/021/0002750167?sid=100" target="_blank" class="news-link">원문 보기 →</a>
+        </div>
+        
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">💰 경제 뉴스 요약</h2>
+            <div class="summary-box">1. 차량 및 부품 관세 15%로 인하, 이달 1일부터 소급 적용 전망  
+한미 양국이 자동차와 부품에 대한 관세를 기존 25%에서 15%로 인하하기로 합의했으며, 이는 이달 1일부터 소급 적용될 가능성이 크다. 반도체는 대만과 비교해 불리하지 않은 관세율을 유지하며, 의약품 관세도 15% 이하로 제한한다. 철강 및 알루미늄 관세 50%는 유지되나, 목재 관세 및 일부 항공기 부품 관세는 낮춰진다. 주요 기업들은 환영 의사를 표명하며, 대통령은 주요 기업인들과 면담할 예정이다.
+
+2. 메르세데스-벤츠, 2027년까지 신차 40종 이상 출시 계획  
+메르세데스-벤츠는 2027년까지 글로벌 시장, 특히 한국에서 신차 40종 이상을 출시하겠다고 발표했다. 전기차, 플러그인 하이브리드, 내연기관 첨단차량 등 다양한 신기술 차량을 포함하며, 서울에 아시아 제조 구매 허브를 설립할 계획이다. 삼성과 LG 등 한국 기업과의 협력도 강화하며, 순수 전기 SUV 신모델도 공개했다.
+
+3. BGF리테일 인사 이동  
+BGF리테일에서 상무로 장영식과 윤현수, BGF에서 상무로 우진용이 신규 임명됐다.
+
+4. 모태펀드 출범 20주년, 벤처투자 생태계 발전과 향후 과제 논의  
+중소벤처기업부와 한국벤처투자는 모태펀드 출범 20주년을 맞아 정책포럼을 개최, 벤처투자 시장에서 모태펀드가 마중물 역할을 해왔음을 평가했다. 존속기간 연장 및 민간자금 유입 확대 필요성을 강조했으며, AI·딥테크 등 국가 전략 산업 육성에 기여하고 민간 LP 참여를 활성화하려는 계획을 논의했다. 한성숙 장관은 모태펀드의 역할 강화 의지를 밝혔다.
+
+5. 미·스위스 관세 분쟁 종료, 스위스 대미 투자 2,000억 달러 약속  
+미국과 스위스가 스위스산 수입품 관세를 최대 39%에서 15%로 낮추는 데 합의하며 오래된 관세 갈등이 마침내 해결됐다. 스위스는 미국에 2,000억 달러(약 270조 원)를 투자하고, 일부 제조업을 미국으로 이전할 계획이다. 이번 합의는 정치적 부담 완화를 위한 미국 내 압박과 스위스 </div>
+            <div class="news-grid">
+                
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-number">#1</span>
+                <span class="news-date">6분전</span>
+            </div>
+            <h3 class="news-title">車·부품 관세 15%로 인하… 이달 1일자로 소급 적용될 듯</h3>
+            <p class="news-content">반도체는 ‘대만 대비 불리하지 않게’ 철강·알루미늄 50% 관세는 유지 한미 양국이 14일 관세 협상 결과를 담은 ‘조인트 팩트 시트(공동 설명 자료)’를 발표하고, ‘한미 전략적 투자에 관한 양해각서(MOU)’에도 서명했다. 이에 따르면 미 정부는 한국산 차·부품에 대한 품목 관세를 25%에서 15%로 내린다. 인하 시점은 이달 1일부터가 유력하다. 김정...</p>
+            <a href="https://n.news.naver.com/mnews/article/023/0003941159?sid=101" target="_blank" class="news-link">원문 보기 →</a>
+        </div>
+        
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-number">#2</span>
+                <span class="news-date">18분전</span>
+            </div>
+            <h3 class="news-title">벤츠의 승부수… “2027년까지 신차 40종”</h3>
+            <p class="news-content">메르세데스-벤츠가 2027년까지 한국을 포함한 글로벌 시장에 신차 40종 이상을 출시한다. 올라 칼레니우스 메르세데스-벤츠 이사회 회장 겸 최고경영자(CEO)는 14일 인천 파라다이스시티에서 열린 ‘미래 전략 간담회’에서 “순수 전기차, 플러그인 하이브리드, 전동화 기반 첨단 내연기관 차량 등 메르세데스-벤츠 역사상 가장 큰 규모의 신차 및 기술 출시 프로...</p>
+            <a href="https://n.news.naver.com/mnews/article/023/0003941132?sid=101" target="_blank" class="news-link">원문 보기 →</a>
+        </div>
+        
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-number">#3</span>
+                <span class="news-date">18분전</span>
+            </div>
+            <h3 class="news-title">[경제계 인사] BGF리테일</h3>
+            <p class="news-content">▲ BGF리테일 ▷상무 장영식 윤현수▲BGF▷상무 우진용...</p>
+            <a href="https://n.news.naver.com/mnews/article/023/0003941130?sid=101" target="_blank" class="news-link">원문 보기 →</a>
+        </div>
+        
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-number">#4</span>
+                <span class="news-date">3분전</span>
+            </div>
+            <h3 class="news-title">미·스위스 관세전 마침표… 스위스, 2000억달러 대미투자 약속</h3>
+            <p class="news-content">【파이낸셜뉴스 뉴욕=이병철 특파원 】 미국 트럼프 행정부가 스위스와 수 개월간 이어온 통상 갈등을 마무리하며 스위스산 수입품 관세를 15%로 낮추는 데 합의했다. 이번 합의는 공화당이 최근 주·지방선거에서 참패한 가운데 생활비 압박 완화를 요구하는 정치적 부담이 커진 상황과 맞물린 것으로 평가된다. 미 무역대표부(USTR)의 제이미슨 그리어는 14일(현지시...</p>
+            <a href="https://n.news.naver.com/mnews/article/014/0005434793?sid=101" target="_blank" class="news-link">원문 보기 →</a>
+        </div>
+        
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-number">#5</span>
+                <span class="news-date">5분전</span>
+            </div>
+            <h3 class="news-title">타깃 이어 월마트도…美 유통공룡들 잇따라 수장 교체</h3>
+            <p class="news-content">맥밀런 월마트 CEO 12년만에 퇴임…후임엔 퍼너 미국법인 대표 미 캘리포니아주 오션사이드의 월마트 매장 [로이터 연합뉴스 자료사진. 재판매 및 DB 금지] (뉴욕=연합뉴스) 이지헌 특파원 = 미 최대 유통기업 월마트를 10년 넘게 이끈 더그 맥밀런(59) 최고경영자(CEO)가 퇴임한다고 회사 측이 14일(현지시간) 밝혔다. 후임으로 내정된 존 퍼너(51)...</p>
+            <a href="https://n.news.naver.com/mnews/article/001/0015743744?sid=101" target="_blank" class="news-link">원문 보기 →</a>
+        </div>
+        
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+    
